@@ -5,7 +5,7 @@ import { Collection } from 'discord.js'
 import { DecompiledParamArray, PrefixCommandType } from '../types/PrefixCommand'
 
 export function prefixCommandHandler(
-    eventDir: string = '../prefix_commands'
+    prefixCommandDir: string = '../prefix_commands'
 ): PrefixCommandType | void {
     logger.debug(
         '[PREFIX COMMAND] Beginning prefix command registration process...'
@@ -13,7 +13,7 @@ export function prefixCommandHandler(
 
     const commands = new Collection() as PrefixCommandType
 
-    const commandRootFolderPath = path.join(__dirname, eventDir)
+    const commandRootFolderPath = path.join(__dirname, prefixCommandDir)
 
     if (!fs.existsSync(commandRootFolderPath)) {
         logger.warn(
